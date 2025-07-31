@@ -1,0 +1,29 @@
+{
+  "name": "token-counter-server",
+  "version": "0.1.0",
+  "description": "Creating a token-aware system to manage the context window for LLMs is a sophisticated approach to optimizing multi-agent workflows. It correctly identifies a key bottleneck in current AI-powered development systems.",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "token-counter-server": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "glob": "^11.0.3",
+    "tiktoken": "^1.0.21",
+    "token-count": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}
