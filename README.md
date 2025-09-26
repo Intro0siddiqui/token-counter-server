@@ -54,3 +54,4 @@ npm run inspector
 ```
 
 The Inspector will provide a URL to access debugging tools in your browser.
+[![MCP Badge](https://lobehub.com/badge/mcp-full/intro0siddiqui-token-counter-server)](https://lobehub.com/mcp/intro0siddiqui-token-counter-server)
