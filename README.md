@@ -8,55 +8,65 @@ This is a TypeScript-based MCP server that provides a tool for counting tokens i
 
 ## Installation
 
-There are two primary ways to install and run this server.
+To get started, you first need to clone the repository and build the server from the source code.
 
-### Method 1: From Source (Manual)
+### Step 1: Clone and Build
 
-1.  **Clone the repository:**
+1.  **Clone the repository** to your local machine:
     ```bash
     git clone https://github.com/intro0siddiqui/token-counter-server.git
+    ```
+
+2.  **Navigate into the directory**:
+    ```bash
     cd token-counter-server
     ```
 
-2.  **Install dependencies:**
+3.  **Install dependencies and build the project**:
     ```bash
     npm install
-    ```
-
-3.  **Build the server:**
-    ```bash
     npm run build
     ```
+After this step, the server is ready to be used. You can now configure your MCP client (like Claude Desktop) to use it.
 
-4.  **Configure your client (e.g., Claude Desktop):**
-    Add the following to your `claude_desktop_config.json`:
-    -   **MacOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-    -   **Windows:** `%APPDATA%/Claude/claude_desktop_config.json`
+### Step 2: Configure Your Client
 
-    ```json
-    {
-      "mcpServers": {
-        "token-counter-server": {
-          "command": "/path/to/your/cloned/repo/token-counter-server/build/index.js"
-        }
-      }
+You have two options for configuring your client:
+
+#### Option A: Use the Full Path (Simple)
+
+You can point your client directly to the built server file. This is the simplest method and doesn't require any global system changes.
+
+In your `claude_desktop_config.json`, use the full path to `build/index.js` inside the directory you just cloned.
+
+-   **MacOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+-   **Windows:** `%APPDATA%/Claude/claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "token-counter-server": {
+      "command": "/path/to/your/cloned/repo/token-counter-server/build/index.js"
     }
-    ```
-    *Replace `/path/to/your/cloned/repo` with the actual path.*
+  }
+}
+```
+*Remember to replace `/path/to/your/cloned/repo` with the actual, absolute path on your system.*
 
-### Method 2: Install as a Global Command
+#### Option B: Make the Command Globally Available (Advanced)
 
-This method makes the `token-counter-server` command available globally, so you don't need to use the full path in your client configuration.
+If you prefer to use a simple `token-counter-server` command without typing the full path, you can install the server as a global command.
 
-1.  **Install globally from the local source:**
-    After cloning the repository, installing dependencies, and building the project (as described in Method 1), navigate to the project's root directory and run:
+**Important**: You must be inside the `token-counter-server` directory (the one you cloned) before running this command.
+
+1.  **Install globally from the local source**:
     ```bash
     npm install -g .
     ```
-    This will install the package from the current directory and create a symbolic link to the executable in your system's path.
+    This command creates a symbolic link on your system that points to the server executable.
 
-2.  **Configure your client:**
-    You can now use the `token-counter-server` command directly in your MCP client configuration:
+2.  **Configure your client with the simple command**:
+    Now you can use `token-counter-server` in your client configuration:
     ```json
     {
       "mcpServers": {
