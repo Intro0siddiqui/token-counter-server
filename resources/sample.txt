@@ -1,0 +1,2 @@
+This is a sample text file for the token-counter-server.
+It can be used to test the token counting functionality.
