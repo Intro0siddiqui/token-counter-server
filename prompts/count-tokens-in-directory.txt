@@ -1,0 +1,1 @@
+How many tokens are in the `src` directory, only counting `.ts` files?

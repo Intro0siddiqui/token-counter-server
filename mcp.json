@@ -1,0 +1,8 @@
+{
+  "name": "token-counter-server",
+  "version": "0.1.0",
+  "tools": ["count_tokens"],
+  "prompts": ["count-tokens-in-file", "count-tokens-in-directory"],
+  "install_methods": ["manual", "npm install"],
+  "resources": ["sample.txt"]
+}
