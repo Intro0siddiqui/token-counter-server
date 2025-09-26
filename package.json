@@ -17,6 +17,7 @@
     "inspector": "npx @modelcontextprotocol/inspector build/index.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.64.0",
     "@modelcontextprotocol/sdk": "^0.6.0",
     "glob": "^11.0.3",
     "tiktoken": "^1.0.21",
