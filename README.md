@@ -44,15 +44,28 @@ There are two primary ways to install and run this server.
     ```
     *Replace `/path/to/your/cloned/repo` with the actual path.*
 
-### Method 2: Using `npm` (Recommended)
+### Method 2: Install as a Global Command
 
-1.  **Install the package globally (once published):**
+This method makes the `token-counter-server` command available globally, so you don't need to use the full path in your client configuration.
+
+1.  **Install globally from the local source:**
+    After cloning the repository, installing dependencies, and building the project (as described in Method 1), navigate to the project's root directory and run:
     ```bash
-    npm install -g token-counter-server
+    npm install -g .
     ```
+    This will install the package from the current directory and create a symbolic link to the executable in your system's path.
 
 2.  **Configure your client:**
-    Use the command `token-counter-server` in your MCP client configuration.
+    You can now use the `token-counter-server` command directly in your MCP client configuration:
+    ```json
+    {
+      "mcpServers": {
+        "token-counter-server": {
+          "command": "token-counter-server"
+        }
+      }
+    }
+    ```
 
 ## Tools Included
 
