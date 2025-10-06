@@ -20,8 +20,8 @@
     "@anthropic-ai/sdk": "^0.64.0",
     "@modelcontextprotocol/sdk": "^0.6.0",
     "glob": "^11.0.3",
-    "tiktoken": "^1.0.21",
-    "token-count": "^0.0.1"
+    "mistral-tokenizer-js": "^1.0.0",
+    "tiktoken": "^1.0.21"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
