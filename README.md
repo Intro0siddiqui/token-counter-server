@@ -1,6 +1,4 @@
-# token-counter-server MCP Server
 
-[![MCP Badge](https://lobehub.com/badge/mcp-full/intro0siddiqui-token-counter-server)](https://lobehub.com/mcp/intro0siddiqui-token-counter-server)
 
 Creating a token-aware system to manage the context window for LLMs is a sophisticated approach to optimizing multi-agent workflows. It correctly identifies a key bottleneck in current AI-powered development systems.
 
