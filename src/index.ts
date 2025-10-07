@@ -7,6 +7,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import Anthropic from "@anthropic-ai/sdk";
 import { get_encoding } from "tiktoken";
+import MistralTokenizer from "mistral-tokenizer-js";
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { z } from "zod";
@@ -68,6 +69,20 @@ async function countTokens(
     return countAnthropicTokens(allContent);
   }
 
+  if (tokenizer === "mistral") {
+    const tokenizer = new MistralTokenizer();
+    const tokens = tokenizer.encode(allContent);
+    return tokens.length;
+  }
+
+  if (tokenizer === "words") {
+    return allContent.split(/\s+/).filter(Boolean).length;
+  }
+
+  if (tokenizer === "chars") {
+    return allContent.length;
+  }
+
   // Default to tiktoken
   const enc = get_encoding("cl100k_base");
   try {
@@ -82,7 +97,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         tools: [
             {
                 name: "count_tokens",
-                description: "Count the number of tokens in a file or directory.",
+                description: "Count the number of tokens, words, or characters in a file or directory. Supports multiple tokenizers.",
                 inputSchema: {
                     type: "object",
                     properties: {
@@ -96,7 +111,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
                         },
                         tokenizer: {
                             type: "string",
-                            description: "The tokenizer to use (e.g., 'tiktoken', 'anthropic'). Defaults to 'tiktoken'.",
+                            description: "The tokenizer to use. Options: 'tiktoken' (default), 'anthropic', 'mistral', 'words', 'chars'. Note: 'anthropic' makes an API call and may incur costs.",
                         },
                     },
                     required: ["path"],
